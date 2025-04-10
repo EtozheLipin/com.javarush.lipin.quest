@@ -23,10 +23,10 @@ public class HaveFriendsServlet extends HttpServlet {
         String playerName = (String) session.getAttribute("playerName");
 
         if ("button1".equals(action)) {
-            resp.sendRedirect("have-legs-servlet");
+            resp.sendRedirect("js-servlet");
             return;
         } else if ("button2".equals(action)) {
-            resp.sendRedirect("stupid-servlet");
+            resp.sendRedirect("php-servlet");
             return;
         }
 

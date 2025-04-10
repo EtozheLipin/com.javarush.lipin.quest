@@ -23,10 +23,10 @@ public class HaveLegsServlet extends HttpServlet {
         String playerName = (String) session.getAttribute("playerName");
 
         if ("button1".equals(action)) {
-            resp.sendRedirect("stupid-servlet");
+            resp.sendRedirect("java-servlet");
             return;
         } else if ("button2".equals(action)) {
-            resp.sendRedirect("stupid-servlet");
+            resp.sendRedirect("c++-servlet");
             return;
         }
 

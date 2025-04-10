@@ -18,8 +18,13 @@ public class NoMoneyServlet extends HttpServlet {
 
         HttpSession session = req.getSession(false);
 
+        String action = req.getParameter("action");
 
         String playerName = (String) session.getAttribute("playerName");
+
+        if("button1".equals(action)) {
+            resp.sendRedirect("start-servlet");
+        }
 
         PrintWriter out = resp.getWriter();
         out.println("<html><head>");
@@ -31,11 +36,12 @@ public class NoMoneyServlet extends HttpServlet {
         out.println("</head><body>");
         out.println("<h2>Имя пользователя: " + playerName + "</h2>");
         out.println("<h2>Программирование явно не для вас</h2>");
-        out.println("<form method='post' action='start-servlet'>");
-        out.println("<button type='submit' name='action' value='button1'>Да</button>");
-        out.println("<button type='submit' name='action' value='button2'>Нет</button>");
+        out.println("<img src='5fd531dca6427c7_upscaled.jpg' style='width: 200px; height: auto;' alt='Sample Image'/>");
+        out.println("<form method='get' action='no-money-servlet'>");
+        out.println("<button type='submit' name='action' value='button1'>Начать заново</button>");
         out.println("</form>");
         out.println("</body></html>");
         out.close();
     }
+
 }

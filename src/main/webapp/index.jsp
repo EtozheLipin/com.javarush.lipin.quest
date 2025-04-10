@@ -63,7 +63,7 @@
     <h1>Выбираем первый язык программирования</h1>
     <p>Данный тест не несёт цели кого-либо оскорбить, наслаждайтесь!</p>
 
-    <form action="start-servlet" method="post">
+    <form action="start-servlet" method="get">
         <input type="text" name="playerName" placeholder="Введи своё имя..." required />
         <br/>
         <button type="submit">Начать тест</button>

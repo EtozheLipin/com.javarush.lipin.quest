@@ -6,8 +6,8 @@ import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/start-servlet")
-public class StartServlet extends HttpServlet {
+@WebServlet("/js-servlet")
+public class JavaScriptServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -16,22 +16,14 @@ public class StartServlet extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html");
 
-        HttpSession session = req.getSession();
-
-        String playerName = req.getParameter("playerName");
-
-        if (playerName != null && !playerName.isEmpty()) {
-            session.setAttribute("playerName", playerName);
-        }
+        HttpSession session = req.getSession(false);
 
         String action = req.getParameter("action");
 
-        if ("button1".equals(action)) {
-            resp.sendRedirect("rich-servlet");
-            return;
-        } else if ("button2".equals(action)) {
-            resp.sendRedirect("no-money-servlet");
-            return;
+        String playerName = (String) session.getAttribute("playerName");
+
+        if("button1".equals(action)) {
+            resp.sendRedirect("start-servlet");
         }
 
         PrintWriter out = resp.getWriter();
@@ -42,13 +34,14 @@ public class StartServlet extends HttpServlet {
         out.println("button:hover { background-color: #333333; }");
         out.println("</style>");
         out.println("</head><body>");
-        out.println("<h2>Имя пользователя: " + session.getAttribute("playerName") + "</h2>");
-        out.println("<h2>Хотите много зарабатывать?</h2>");
-        out.println("<form method='get' action='start-servlet'>");
-        out.println("<button type='submit' name='action' value='button1'>Да</button>");
-        out.println("<button type='submit' name='action' value='button2'>Нет</button>");
+        out.println("<h2>Имя пользователя: " + playerName + "</h2>");
+        out.println("<h2>JavaScript</h2>");
+        out.println("<img src='JS.jpg' style='width: 200px; height: auto;' alt='Sample Image'/>");
+        out.println("<form method='get' action='no-money-servlet'>");
+        out.println("<button type='submit' name='action' value='button1'>Начать заново</button>");
         out.println("</form>");
         out.println("</body></html>");
         out.close();
     }
+
 }

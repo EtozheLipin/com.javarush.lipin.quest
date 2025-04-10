@@ -26,7 +26,7 @@ public class SmartServlet extends HttpServlet {
             resp.sendRedirect("have-legs-servlet");
             return;
         } else if ("button2".equals(action)) {
-            resp.sendRedirect("stupid-servlet");
+            resp.sendRedirect("c-servlet");
             return;
         }
 

@@ -26,7 +26,7 @@ public class StupidServlet extends HttpServlet {
             resp.sendRedirect("have-friends-servlet");
             return;
         } else if ("button2".equals(action)) {
-            resp.sendRedirect("stupid-servlet");
+            resp.sendRedirect("python-servlet");
             return;
         }
 
