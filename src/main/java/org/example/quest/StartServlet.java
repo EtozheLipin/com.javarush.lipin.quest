@@ -34,7 +34,7 @@ public class StartServlet extends HttpServlet {
 
         out.println("<html><body>");
         out.println("<h2>Привет, " + session.getAttribute("playerName") + "!</h2>");
-        out.println("<h2>Вы хотите деняк?</h2>");
+        out.println("<h2>Вы хотите денег?</h2>");
         out.println("<form method='post' action='start-servlet'>");
         out.println("<button type='submit' name='action' value='button1'>Да</button>");
         out.println("<button type='submit' name='action' value='button2'>Нет</button>");
