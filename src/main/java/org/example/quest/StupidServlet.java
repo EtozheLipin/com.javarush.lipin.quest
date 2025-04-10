@@ -6,31 +6,27 @@ import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/start-servlet")
-public class StartServlet extends HttpServlet {
+@WebServlet("/stupid-servlet")
+public class StupidServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html");
 
-        HttpSession session = req.getSession();
-
-        String playerName = req.getParameter("playerName");
-
-        if (playerName != null && !playerName.isEmpty()) {
-            session.setAttribute("playerName", playerName);
-        }
+        HttpSession session = req.getSession(false);
 
         String action = req.getParameter("action");
 
+        String playerName = (String) session.getAttribute("playerName");
+
         if ("button1".equals(action)) {
-            resp.sendRedirect("rich-servlet");
+            resp.sendRedirect("have-friends-servlet");
             return;
         } else if ("button2".equals(action)) {
-            resp.sendRedirect("no-money-servlet");
+            resp.sendRedirect("stupid-servlet");
             return;
         }
 
@@ -42,9 +38,9 @@ public class StartServlet extends HttpServlet {
         out.println("button:hover { background-color: #333333; }");
         out.println("</style>");
         out.println("</head><body>");
-        out.println("<h2>Имя пользователя: " + session.getAttribute("playerName") + "</h2>");
-        out.println("<h2>Хотите много зарабатывать?</h2>");
-        out.println("<form method='post' action='start-servlet'>");
+        out.println("<h2>Имя пользователя: " + playerName + "</h2>");
+        out.println("<h2>Очень?</h2>");
+        out.println("<form method='get' action='stupid-servlet'>");
         out.println("<button type='submit' name='action' value='button1'>Да</button>");
         out.println("<button type='submit' name='action' value='button2'>Нет</button>");
         out.println("</form>");
