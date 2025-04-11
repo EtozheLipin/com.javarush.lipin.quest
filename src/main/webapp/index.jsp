@@ -1,4 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<%
+    request.setAttribute("now", new java.util.Date());
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,6 +69,11 @@
 <div class="container">
     <h1>Выбираем первый язык программирования</h1>
     <p>Данный тест не несёт цели кого-либо оскорбить, наслаждайтесь!</p>
+
+    <p style="font-size: 0.8em; color: #ccc;">
+        Страница загружена:
+        <fmt:formatDate value="${now}" pattern="dd.MM.yyyy HH:mm:ss" />
+    </p>
 
     <form action="start-servlet" method="get">
         <input type="text" name="playerName" placeholder="Введи своё имя..." required />
